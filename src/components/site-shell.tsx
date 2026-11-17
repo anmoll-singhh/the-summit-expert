@@ -115,7 +115,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
           <Link to="/" aria-label="Summit Experts home" className="shrink-0">
             <Logo light={light} />
           </Link>
-          <nav className="ml-auto hidden items-center gap-3 min-[1280px]:flex">
+          <nav className="ml-auto hidden items-center gap-3 min-[1480px]:flex">
             {nav.map((item) => {
               const href = item.slug ? `/${item.slug}` : "/";
               const active = path === href;
@@ -147,13 +147,13 @@ export function SiteShell({ children }: { children: ReactNode }) {
             type="button"
             aria-label="Search tours"
             onClick={() => setSearch(true)}
-            className={`ml-auto rounded-full p-2 min-[1280px]:ml-2 ${light ? "text-paper" : "text-ink"}`}
+            className={`ml-auto rounded-full p-2 min-[1480px]:ml-2 ${light ? "text-paper" : "text-ink"}`}
           >
             <Search className="size-5" />
           </button>
           <button
             type="button"
-            className={`rounded-full p-2 min-[1280px]:hidden ${light ? "text-paper" : "text-ink"}`}
+            className={`rounded-full p-2 min-[1480px]:hidden ${light ? "text-paper" : "text-ink"}`}
             aria-label={open ? "Close menu" : "Open menu"}
             onClick={() => setOpen((v) => !v)}
           >
@@ -161,7 +161,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
           </button>
         </div>
         {open && (
-          <div className="border-t border-line bg-paper px-4 py-3 min-[1280px]:hidden">
+          <div className="border-t border-line bg-paper px-4 py-3 min-[1480px]:hidden">
             {nav.map((item) =>
               item.slug ? (
                 <Link
