@@ -1,3 +1,5 @@
+robots.txt
+sitemap.xml
 wp-content/litespeed/avatar/e14f61209def8cae7cea8ceeba93787d.jpg
 wp-content/plugins/elementor-pro/assets/css/conditionals/popup.min.css
 wp-content/plugins/elementor-pro/assets/css/conditionals/transitions.min.css
@@ -183,8 +185,11 @@ wp-content/uploads/2025/01/Logo-2-300x113.png
 wp-content/uploads/2025/01/Logo-2-600x226.webp
 wp-content/uploads/2025/01/Logo-2.webp
 wp-content/uploads/2025/01/Screenshot-2026-01-07-at-7.00.50 PM-300x126.png
+wp-content/uploads/2025/01/Screenshot-2026-01-07-at-7.00.50 PM-300x126.png.webp
 wp-content/uploads/2025/01/Screenshot-2026-01-07-at-7.00.50 PM-600x251.png
+wp-content/uploads/2025/01/Screenshot-2026-01-07-at-7.00.50 PM-600x251.png.webp
 wp-content/uploads/2025/01/Screenshot-2026-01-07-at-7.00.50 PM-768x321.png
+wp-content/uploads/2025/01/Screenshot-2026-01-07-at-7.00.50 PM-768x321.png.webp
 wp-content/uploads/2025/01/Screenshot-2026-01-07-at-7.00.50 PM.png
 wp-content/uploads/2025/01/Screenshot-2026-01-07-at-7.00.50 PM.png.webp
 wp-content/uploads/2025/01/TripSans-Medium.eot
@@ -860,8 +865,6 @@ wp-includes/js/jquery/jquery-migrate.min.js
 wp-includes/js/jquery/jquery.min.js
 wp-includes/js/jquery/ui/core.min.js
 wp-includes/js/wp-emoji-release.min.js
-robots.txt
-sitemap.xml
 wp-sitemap-index.xsl
 wp-sitemap-posts-customer_reviews-1.xml
 wp-sitemap-posts-page-1.xml

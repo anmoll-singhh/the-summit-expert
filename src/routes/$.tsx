@@ -3,7 +3,7 @@ import type { PageData } from "@/wp/content";
 import { loadPage, WpPage } from "@/wp/page";
 
 export const Route = createFileRoute("/$")({
-  loader: ({ location }) => loadPage(location.pathname),
+  loader: ({ location }) => loadPage(location.pathname, location.searchStr),
   component: SitePage,
   notFoundComponent: ({ data }) => <WpPage pageKey={(data as PageData | undefined)?.key ?? "__404"} />,
 });
