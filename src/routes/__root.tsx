@@ -1,5 +1,6 @@
 import { createRootRoute, HeadContent, Outlet, Scripts, useRouterState } from "@tanstack/react-router";
 import type { PageData } from "@/wp/content";
+import { PageHeadTags } from "@/wp/page";
 
 export const Route = createRootRoute({
   head: () => ({
@@ -10,22 +11,20 @@ export const Route = createRootRoute({
 });
 
 function Root() {
-  const bodyClass = useRouterState({
+  const page = useRouterState({
     select: (s) => {
       const leaf = s.matches[s.matches.length - 1];
-      const data = (leaf?.loaderData ?? (leaf?.error as { data?: PageData } | undefined)?.data) as
-        | PageData
-        | undefined;
-      return data?.bodyClass ?? "";
+      return (leaf?.loaderData ?? (leaf?.error as { data?: PageData } | undefined)?.data) as PageData | undefined;
     },
   });
   return (
     <html lang="en-US" suppressHydrationWarning>
       <head>
         <HeadContent />
+        <PageHeadTags data={page} />
         <Scripts />
       </head>
-      <body className={bodyClass} suppressHydrationWarning>
+      <body className={page?.bodyClass ?? ""} suppressHydrationWarning>
         <Outlet />
       </body>
     </html>

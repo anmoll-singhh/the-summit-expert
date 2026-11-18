@@ -1,9 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { loadPage, pageHead, WpPage } from "@/wp/page";
+import { loadPage, WpPage } from "@/wp/page";
 
 export const Route = createFileRoute("/")({
   loader: () => loadPage("/"),
-  head: ({ loaderData }) => pageHead(loaderData),
   component: HomePage,
 });
 
