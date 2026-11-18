@@ -10,43 +10,53 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as SlugRouteImport } from './routes/$slug'
+import { Route as SplatRouteImport } from './routes/$'
+import { Route as WpAdminAdminAjaxDotphpRouteImport } from './routes/wp-admin/admin-ajax[.]php'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SlugRoute = SlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
+const SplatRoute = SplatRouteImport.update({
+  id: '/$',
+  path: '/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WpAdminAdminAjaxDotphpRoute = WpAdminAdminAjaxDotphpRouteImport.update({
+  id: '/wp-admin/admin-ajax.php',
+  path: '/wp-admin/admin-ajax.php',
   getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/$slug': typeof SlugRoute
+  '/$': typeof SplatRoute
+  '/wp-admin/admin-ajax.php': typeof WpAdminAdminAjaxDotphpRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/$slug': typeof SlugRoute
+  '/$': typeof SplatRoute
+  '/wp-admin/admin-ajax.php': typeof WpAdminAdminAjaxDotphpRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/$slug': typeof SlugRoute
+  '/$': typeof SplatRoute
+  '/wp-admin/admin-ajax.php': typeof WpAdminAdminAjaxDotphpRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/$slug'
+  fullPaths: '/' | '/$' | '/wp-admin/admin-ajax.php'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/$slug'
-  id: '__root__' | '/' | '/$slug'
+  to: '/' | '/$' | '/wp-admin/admin-ajax.php'
+  id: '__root__' | '/' | '/$' | '/wp-admin/admin-ajax.php'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  SlugRoute: typeof SlugRoute
+  SplatRoute: typeof SplatRoute
+  WpAdminAdminAjaxDotphpRoute: typeof WpAdminAdminAjaxDotphpRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -58,11 +68,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/$slug': {
-      id: '/$slug'
-      path: '/$slug'
-      fullPath: '/$slug'
-      preLoaderRoute: typeof SlugRouteImport
+    '/$': {
+      id: '/$'
+      path: '/$'
+      fullPath: '/$'
+      preLoaderRoute: typeof SplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/wp-admin/admin-ajax.php': {
+      id: '/wp-admin/admin-ajax.php'
+      path: '/wp-admin/admin-ajax.php'
+      fullPath: '/wp-admin/admin-ajax.php'
+      preLoaderRoute: typeof WpAdminAdminAjaxDotphpRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -70,7 +87,8 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  SlugRoute: SlugRoute,
+  SplatRoute: SplatRoute,
+  WpAdminAdminAjaxDotphpRoute: WpAdminAdminAjaxDotphpRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
