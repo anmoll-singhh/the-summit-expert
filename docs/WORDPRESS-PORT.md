@@ -31,7 +31,7 @@ the original pages.
 - `src/routes/wp-admin/admin-ajax[.]php.ts` — Elementor form submissions are
   relayed to the original form backend (`FORM_RELAY_URL`, default the WP
   site's admin-ajax.php) so leads, success messages and redirects stay the same.
-- `server/middleware/trailing-slash.ts` — 301 slash-less URLs like WordPress.
+- Slash-less URLs of known pages get a 301 to the trailing-slash form (query kept) from `resolvePath`; unknown URLs, including missing `/wp-content/` files, render the WordPress 404 page with status 404 — both as WordPress does. The router uses `trailingSlash: "preserve"` so it never adds its own 307s.
 
 ## Re-capturing after content changes on WordPress
 
