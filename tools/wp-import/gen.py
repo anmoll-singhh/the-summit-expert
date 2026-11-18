@@ -24,14 +24,18 @@ for path in sorted(glob.glob(WP+'/*.html')):
     headraw=hm.group(1); bodyattrs=bm.group(1); bodyraw=bm.group(2)
     bodyclass=re.search(r'class="([^"]*)"',bodyattrs).group(1)
     soup=BeautifulSoup(headraw,'html.parser')
-    meta=[];links=[];jsonld=[];title='';assets=[]
+    meta=[];links=[];jsonld=[];title='';assets=[];vp=0
     for el in soup.children:
         n=getattr(el,'name',None)
         if not n: continue
         if n=='title': title=el.get_text()
         elif n=='meta':
             a=dict(el.attrs)
-            if a.get('charset') or a.get('name')=='viewport': continue
+            if a.get('charset'): continue
+            # the root renders the first viewport meta; keep any repeats
+            if a.get('name')=='viewport':
+                vp+=1
+                if vp==1: continue
             meta.append(a)
         elif n=='link' and 'stylesheet' not in (el.get('rel') or []) and el.get('rel')!=['preload']:
             a=dict(el.attrs); a['rel']=' '.join(a['rel']) if isinstance(a.get('rel'),list) else a.get('rel')
